@@ -1,0 +1,4 @@
+
+* Update README.txt for minimal installation instructions
+
+* Make everything in ./docs/ more informative

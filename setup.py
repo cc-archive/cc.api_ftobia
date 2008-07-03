@@ -30,7 +30,7 @@ setup(
     #        ('public/**', 'ignore', None)]},
     entry_points="""
     [paste.app_factory]
-    main = ccapi.config.middleware:make_app
+    main = cc.api.config.middleware:make_app
 
     [paste.app_install]
     main = pylons.util:PylonsInstaller

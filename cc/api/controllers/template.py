@@ -1,4 +1,4 @@
-from ccapi.lib.base import *
+from cc.api.lib.base import *
 
 class TemplateController(BaseController):
 

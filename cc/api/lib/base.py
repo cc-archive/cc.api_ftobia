@@ -10,8 +10,8 @@ from pylons.decorators import jsonify, validate
 from pylons.i18n import _, ungettext, N_
 from pylons.templating import render
 
-import ccapi.lib.helpers as h
-import ccapi.model as model
+import cc.api.lib.helpers as h
+import cc.api.model as model
 
 class BaseController(WSGIController):
 

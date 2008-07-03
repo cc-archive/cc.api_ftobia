@@ -11,6 +11,10 @@ setup-app) with the project's test.ini configuration file.
 import os
 import sys
 import random
+import operator
+import lxml
+import lxml.etree
+from StringIO import StringIO
 from unittest import TestCase
 
 import pkg_resources
@@ -26,8 +30,12 @@ __all__ = [
            'relax_validate',
           ]
 
-RELAX_PATH = os.path.abspath('schemata')
+RELAX_PATH = os.path.join(
+                 os.path.abspath(os.curdir),
+                 'cc', 'api', 'tests', 'schemata')
+  # TODO: decide on a better way to create RELAX_PATH
 TOO_MANY = 25
+print RELAX_PATH
 
 here_dir = os.path.dirname(os.path.abspath(__file__))
 conf_dir = os.path.dirname(os.path.dirname(os.path.dirname(here_dir)))
@@ -148,16 +156,15 @@ class TestData:
             yield result
 
 
-class TestController():#TestCase):
+class TestController():
     """Base class of test classes for the CC API. Defines test fixture
        behavior for creating and destroying webtest.TestApp instance of 
        the WSGI server."""
 
-    def __init__(self):#, *args, **kwargs):
+    def __init__(self):
         self.data = TestData()
         wsgiapp = loadapp('config:test.ini', relative_to=conf_dir)
         self.app = paste.fixture.TestApp(wsgiapp)
-        #TestCase.__init__(self, *args, **kwargs)
 
     def setUp(self):
         """Test fixture for nosetests:

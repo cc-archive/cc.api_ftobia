@@ -14,12 +14,13 @@ RELAX_ISSUE = os.path.join(RELAX_PATH, 'issue.relax.xml')
 ##################
 class TestDetails(TestController):
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.uris = ('http://creativecommons.org/licenses/by-nc-nd/2.5/',
                      'http://creativecommons.org/licenses/by-nc-sa/2.5/',
                      'http://creativecommons.org/licenses/by-sa/2.5/',
                      'http://creativecommons.org/licenses/by/2.0/nl/',
                     )
+        TestController.__init__(self, *args, **kwargs)
 
     def test_license_details(self):
         """Test that the license details call responds appropriately."""

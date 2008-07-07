@@ -1,0 +1,5 @@
+cc.api.egg-info
+bin
+eggs
+develop-eggs
+*.pyc

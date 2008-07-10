@@ -24,6 +24,8 @@ class TestRoot(TestController):
         res = self.app.get('/classes')
         assert relax_validate(RELAX_CLASSES, res.body)
 
+    # TODO: known issue -> adding a locale doesn't actually change the output
+    # Though this is because that information isn't localized, yet...
     def test_locales(self):
         """Using locale values returns correct values."""
         for locale in self.data.locales():

@@ -1,0 +1,3 @@
+<locales xmlns:py="http://genshi.edgewall.org/">
+    <locale py:for="locale in locales" id="${locale}" />
+</locales>

@@ -19,6 +19,7 @@ def make_map():
     # CUSTOM ROUTES HERE
 
     map.connect(':controller/:action/:id')
+    map.connect('', controller='classes', action='index')
     map.connect('*url', controller='template', action='view')
 
     return map

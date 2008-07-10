@@ -1,0 +1,8 @@
+<select xmlns:py="http://genshi.edgewall.org/">
+
+    <option py:for="j in jurisdictions"
+            value="${j.id}">
+        ${j.title(lang)}
+    </option>
+
+</select>

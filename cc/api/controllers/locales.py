@@ -18,4 +18,4 @@ class LocalesController(BaseController):
         locales = cc.license.locales()
         tmpl = loader.load('locales.xml')
         stream = tmpl.generate(locales=locales)
-        return stream.render(method='xml')#, doctype='xml')
+        return stream.render(method='xml')

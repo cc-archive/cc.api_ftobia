@@ -3,16 +3,9 @@ import os
 
 from cc.api.lib.base import request, BaseController
 from cc.api.lib.helpers import js_wrap
-from genshi.template import TemplateLoader
 import cc.license
 
 log = logging.getLogger(__name__)
-
-# TODO: do something about this code duplication!
-loader = TemplateLoader(
-    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates'),
-    auto_reload=True
-)
 
 class SupportController(BaseController):
 
@@ -38,7 +31,7 @@ class SupportController(BaseController):
         except KeyError:
             pass
 
-        tmpl = loader.load('options.xml')
+        tmpl = self.loader.load('options.xml')
         stream = tmpl.generate(jurisdictions=jurisdictions, 
                                lang=lang,
                                strip=strip,

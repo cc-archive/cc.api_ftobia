@@ -10,10 +10,20 @@ from pylons.decorators import jsonify, validate
 from pylons.i18n import _, ungettext, N_
 from pylons.templating import render
 
+from genshi.template import TemplateLoader
+import os
+
 import cc.api.lib.helpers as h
 import cc.api.model as model
 
 class BaseController(WSGIController):
+
+    def __init__(self):
+        self.loader = TemplateLoader(
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), 
+                         'templates'),
+            auto_reload=True
+        )
 
     def __call__(self, environ, start_response):
         """Invoke the Controller"""

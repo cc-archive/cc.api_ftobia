@@ -21,11 +21,26 @@ class SupportController(BaseController):
     # TODO: implement all possible options
     def jurisdictions(self):
         jurisdictions = cc.license.jurisdictions()
+
+        # locale option
         try:
             lang = request.GET['locale']
         except KeyError:
             lang = 'en'
 
+        # select option
+        strip = True
+        select = None
+        try:
+            select = request.GET['select']
+            # if it works, we don't strip the select line
+            strip = False
+        except KeyError:
+            pass
+
         tmpl = loader.load('options.xml')
-        stream = tmpl.generate(jurisdictions=jurisdictions, lang=lang)
+        stream = tmpl.generate(jurisdictions=jurisdictions, 
+                               lang=lang,
+                               strip=strip,
+                               name=select)
         return stream.render(method='xml')

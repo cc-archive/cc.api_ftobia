@@ -26,9 +26,12 @@ class TestSupport(TestController):
         jsres = self.app.get('/support/jurisdictions.js')
         opts = res.body.strip().split('\n')
         jsopts = jsres.body.strip().split('\n')
+        print 'opts is length %d' % len(opts)
+        print 'jsopts is length %d' % len(jsopts)
         assert len(opts) == len(jsopts)
+        print
         for i in range(len(opts)):
-            assert "document.write('%s');" % opts[i] == jsopts[i]
+            assert opts[i].strip() in jsopts[i]
 
     def test_ignore_extra_args(self):
         """Extra arguments are ignored."""

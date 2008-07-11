@@ -18,6 +18,10 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
+    # weird javascript ones come first
+    map.connect('/support/jurisdictions.js', controller='support',
+                                             action='javascript')
+    # then the rest
     map.connect(':controller/:action/:id')
     map.connect('', controller='classes', action='index')
     map.connect('*url', controller='template', action='view')

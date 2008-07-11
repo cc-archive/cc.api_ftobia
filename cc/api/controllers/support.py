@@ -2,6 +2,7 @@ import logging
 import os
 
 from cc.api.lib.base import request, BaseController
+from cc.api.lib.helpers import js_wrap
 from genshi.template import TemplateLoader
 import cc.license
 
@@ -18,7 +19,6 @@ class SupportController(BaseController):
     def index(self):
         abort(404) # XXX what should the behavior be?
 
-    # TODO: implement all possible options
     def jurisdictions(self):
         jurisdictions = cc.license.jurisdictions()
 
@@ -44,3 +44,6 @@ class SupportController(BaseController):
                                strip=strip,
                                name=select)
         return stream.render(method='xml')
+
+    def javascript(self):
+        return js_wrap(self.jurisdictions())

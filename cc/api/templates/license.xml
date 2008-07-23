@@ -1,0 +1,55 @@
+<result xmlns:py="http://genshi.edgewall.org/">
+
+  <license-uri>${license.uri}</license-uri>
+  <license-name>${license.title()}</license-name>
+
+  <rdf>
+    <rdf:RDF xmlns="http://creativecommons.org/ns#"
+             xmlns:dc="http://purl.org/dc/elements/1.1/"
+             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+             xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+      <Work rdf:about="">
+        <license rdf:resource="${license.uri}"/>
+      </Work>
+
+      <License py:def="license_xml"
+               rdf:about="${license.uri}">
+        <permits py:for="p in license.permits"
+                 rdf:resource="${p}"/>
+        <requires py:for="r in license.requires"
+                  rdf:resource="${r}"/>
+      </License>
+      ${license_xml()}
+
+    </rdf:RDF>
+  </rdf>
+
+  <licenserdf>
+    <rdf:RDF xmlns="http://creativecommons.org/ns#"
+             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+      ${license_xml()}
+
+    </rdf:RDF>
+  </licenserdf>
+
+  <html>
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+      <img alt="Creative Commons License"
+           style="border-width:0"
+           src="http://i.creativecommons.org/l/by/3.0/88x31.png"/>
+    </a>
+
+    <br/>
+
+    This <span xmlns:dc="http://purl.org/dc/elements/1.1/"
+               href="http://purl.org/dc/dcmitype/"
+               rel="dc:type">work</span> is licensed under a 
+    <a rel="license"
+       href="${license.uri}">
+       Creative Commons Attribution 3.0 Unported License</a>.
+
+  </html>
+
+</result>

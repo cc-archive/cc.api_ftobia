@@ -1,0 +1,7 @@
+<error xmlns:py="http://genshi.edgewall.org/">
+
+  <id>${id}</id>
+
+  <message>${msg}</message>
+
+</error>

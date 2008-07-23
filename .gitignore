@@ -3,3 +3,4 @@ bin
 eggs
 develop-eggs
 *.pyc
+*.swp

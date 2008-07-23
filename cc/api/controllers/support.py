@@ -13,7 +13,7 @@ class SupportController(BaseController):
         abort(404) # XXX what should the behavior be?
 
     def jurisdictions(self):
-        jurisdictions = cc.license.jurisdictions()
+        jurisdictions = cc.license.jurisdictions.list()
 
         # locale option
         try:

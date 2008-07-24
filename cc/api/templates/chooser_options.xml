@@ -1,0 +1,10 @@
+<select xmlns:py="http://genshi.edgewall.org/"
+        py:strip="strip"
+        name="${name}">
+
+    <option py:for="l in licenses"
+            value="${l.uri}">
+        ${l.title(lang)} ${l.version} ${l.jurisdiction.title(lang)}
+    </option>
+
+</select>

@@ -31,7 +31,7 @@ class SupportController(BaseController):
         except KeyError:
             pass
 
-        tmpl = self.loader.load('options.xml')
+        tmpl = self.loader.load('jurisdiction_options.xml')
         stream = tmpl.generate(jurisdictions=jurisdictions, 
                                lang=lang,
                                strip=strip,

@@ -1,7 +1,7 @@
 <result xmlns:py="http://genshi.edgewall.org/">
 
   <license-uri>${license.uri}</license-uri>
-  <license-name>${license.title()}</license-name>
+  <license-name>${license.title(locale)}</license-name>
 
   <rdf>
     <rdf:RDF xmlns="http://creativecommons.org/ns#"

@@ -33,10 +33,11 @@ class BaseController(WSGIController):
         return WSGIController.__call__(self, environ, start_response)
 
     # TODO: add support for jurisdictions
-    def license2xml(self, license):
+    def license2xml(self, license, locale='en'):
         """Turn a cc.license.License object into XML"""
         tmpl = self.loader.load('license.xml')
-        stream = tmpl.generate(license=license)
+        stream = tmpl.generate(license=license,
+                               locale=locale)
         return stream.render(method='xml')
 
     def generate_error(self, id, msg):

@@ -21,6 +21,8 @@ def make_map():
     # weird javascript ones come first
     map.connect('/support/jurisdictions.js', controller='support',
                                              action='javascript')
+    map.connect('/simple/chooser.js', controller='simple',
+                                      action='javascript')
     # then the rest
     map.connect(':controller/:action/:id')
     map.connect('', controller='classes', action='index')

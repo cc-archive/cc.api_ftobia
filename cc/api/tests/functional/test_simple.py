@@ -28,7 +28,7 @@ class TestChooser(TestController):
         jsopts = jsres.body.strip().split('\n')
         assert len(opts) == len(jsopts)
         for i in range(len(opts)):
-            assert "document.write('%s');" % opts[i] == jsopts[i]
+            assert opts[i].strip() in jsopts[i]
 
     def test_ignore_extra_args(self):
         """Extra arguments are ignored."""

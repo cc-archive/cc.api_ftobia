@@ -14,17 +14,35 @@ class SimpleController(BaseController):
 
     
     def chooser(self):
+
+        # jurisdiction option
+        try:
+            jurisdiction = request.GET['jurisdiction']
+        except KeyError:
+            jurisdiction = None
+
+        # TODO: handle case of invalid jurisdiction
+
         # FIXME TEMPORARY
         licenses = []
         std = cc.license.selectors.choose('standard')
         for c in ('by','by-sa','by-nc','by-nd','by-nc-sa','by-nc-nd'):
-            licenses.append( std.by_code(c) )
+            licenses.append( std.by_code(c, jurisdiction=jurisdiction) )
 
-        # TODO add jurisdiction support
+        # exclude option
+        try:
+            exclude = request.GET['exclude']
+            for l in licenses:
+                if exclude in l.uri:
+                    licenses.remove(l)
+        except KeyError:
+            pass # don't exclude anything :)
 
         # locale option
         try:
             lang = request.GET['locale']
+            if lang not in cc.license.locales():
+                lang = 'en' # unknown locale falls back to default
         except KeyError:
             lang = 'en'
 
@@ -46,4 +64,4 @@ class SimpleController(BaseController):
         return stream.render(method='xml')
 
     def javascript(self):
-        return js_wrap(self.jurisdictions())
+        return js_wrap(self.chooser())

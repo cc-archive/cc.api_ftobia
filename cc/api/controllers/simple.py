@@ -1,6 +1,6 @@
 import logging
 
-from cc.api.lib.base import request, BaseController
+from cc.api.lib.base import abort, request, BaseController
 from cc.api.lib.helpers import js_wrap
 
 import cc.license

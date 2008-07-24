@@ -39,6 +39,12 @@ class BaseController(WSGIController):
         stream = tmpl.generate(license=license)
         return stream.render(method='xml')
 
+    def generate_error(self, id, msg):
+        tmpl = self.loader.load('error.xml')
+        stream = tmpl.generate(id=id, msg=msg)
+        return stream.render(method='xml')
+
+
 # Include the '_' function in the public names
 __all__ = [__name for __name in locals().keys() if not __name.startswith('_') \
            or __name == '_']

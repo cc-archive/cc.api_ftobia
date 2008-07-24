@@ -23,6 +23,11 @@ def make_map():
                                              action='javascript')
     map.connect('/simple/chooser.js', controller='simple',
                                       action='javascript')
+    # then license one, though the default could have sufficed
+    map.connect('/license/:lclass/:function', controller='license',
+                                              action='index', 
+                                              lclass=None,
+                                              function=None)
     # then the rest
     map.connect(':controller/:action/:id')
     map.connect('', controller='classes', action='index')

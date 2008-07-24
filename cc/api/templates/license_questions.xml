@@ -1,0 +1,30 @@
+<licenseclass xmlns:py="http://genshi.edgewall.org/"
+              id="${selector.id}">
+  
+    <label xml:lang="${locale}">${selector.title(locale)}</label>
+  
+    <field py:for="question in selector.questions()"
+           id="${question.id}">
+  
+        <label xml:lang="${locale}">
+            ${question.label(locale)}
+        </label>
+   
+        <description xml:lang="${locale}">
+            ${question.description(locale)}
+        </description>
+   
+        <type>enum</type>
+
+        <enum py:for="answer, id in question.answers()"
+              id="${id}">
+     
+            <label xml:lang="${locale}">
+                ${answer}
+            </label>
+     
+        </enum>
+
+    </field>
+
+</licenseclass>

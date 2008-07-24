@@ -1,4 +1,7 @@
 
+* Make <html> tag accurage in License-to-template conversions
+** Add a cc.license.License.to_html() function
+
 * Update README.txt for minimal installation instructions
 
 * Make everything in ./docs/ more informative

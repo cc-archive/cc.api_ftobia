@@ -1,4 +1,4 @@
 <licenses xmlns:py="http://genshi.edgewall.org/">
     <license py:for="lclass in lclasses"
-             id="${lclass.id}">${lclass.title}</license>
+             id="${lclass.id}">${lclass.title(locale)}</license>
 </licenses>

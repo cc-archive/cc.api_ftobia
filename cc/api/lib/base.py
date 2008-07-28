@@ -15,6 +15,7 @@ import os
 
 import cc.api.lib.helpers as h
 import cc.api.model as model
+import cc.license
 
 class BaseController(WSGIController):
 
@@ -36,8 +37,10 @@ class BaseController(WSGIController):
     def license2xml(self, license, locale='en'):
         """Turn a cc.license.License object into XML"""
         tmpl = self.loader.load('license.xml')
+        html = cc.license.formatters.HTML.format(license, locale=locale)
         stream = tmpl.generate(license=license,
-                               locale=locale)
+                               locale=locale,
+                               license_html=html)
         return stream.render(method='xml')
 
     def generate_error(self, id, msg):

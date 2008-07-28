@@ -1,3 +1,5 @@
+<?python from genshi import HTML ?>
+
 <result xmlns:py="http://genshi.edgewall.org/">
 
   <license-uri>${license.uri}</license-uri>
@@ -34,22 +36,6 @@
     </rdf:RDF>
   </licenserdf>
 
-  <html>
-    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
-      <img alt="Creative Commons License"
-           style="border-width:0"
-           src="http://i.creativecommons.org/l/by/3.0/88x31.png"/>
-    </a>
-
-    <br/>
-
-    This <span xmlns:dc="http://purl.org/dc/elements/1.1/"
-               href="http://purl.org/dc/dcmitype/"
-               rel="dc:type">work</span> is licensed under a 
-    <a rel="license"
-       href="${license.uri}">
-       Creative Commons Attribution 3.0 Unported License</a>.
-
-  </html>
+  ${HTML(license_html)}
 
 </result>

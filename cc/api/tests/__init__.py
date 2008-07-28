@@ -93,13 +93,19 @@ class TestData:
     def _field_enums(self, lclass):
         """Retrieve the license information for this class, and generate 
            a set of answers for use with testing."""
-        enums = [('jurisdiction', ['', 'us', 'de', 'uk'])]
-        if lclass == 'publicdomain' or lclass == 'recombo':
-            return enums
+        enums = []
+        if lclass == 'publicdomain':
+            pass
+        elif lclass == 'recombo':
+            enums.append(('jurisdiction', ['', 'tw']))
+                              # 'br' doesnt exist for 'ncsamplingplus'
+            enums.append(('sampling', ['sampling', 'samplingplus',
+                                       'ncsamplingplus']))
         else:
+            enums.append(('jurisdiction', ['', 'us', 'de', 'uk']))
             enums.append(('commercial', ['y', 'n']))
             enums.append(('derivatives', ['y', 'sa', 'n']))
-            return enums
+        return enums
 
     def locales(self, canned=True):
         """Return a list of supported locales.

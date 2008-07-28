@@ -47,6 +47,7 @@ class TestLicense(TestController):
                            self.data.xml_answers(lclass),
                            self.data.query_string_answers(lclass)
                            ):
+                print 'answers: %s' % answers
                 issue = self.app.post('/license/%s/issue' % lclass,
                                      params={'answers':answers}).body
                 get = self.app.get('/license/%s/get%s' %
@@ -92,11 +93,11 @@ class TestLicenseIssue(TestController):
     def _issue(self, lclass):
         """Common /issue testing code."""
         for answers in self.data.xml_answers(lclass):
-            res = self.app.post('/license/%s/issue' % lclass,
-                                     params={'answers':answers})
             print 'lclass: %s' % lclass
             print 'answers: %s' % answers
             print
+            res = self.app.post('/license/%s/issue' % lclass,
+                                     params={'answers':answers})
             assert relax_validate(RELAX_ISSUE, res.body)
 
     def test_license_standard(self):
@@ -111,8 +112,8 @@ class TestLicenseIssue(TestController):
         """/issue issues recombo licenses successfully."""
         self._issue('recombo')
 
-    def test_publicdomain_failure(self): 
-        """publicdomain fails with certain answers."""
+    def test_publicdomain_ignores_answers(self): 
+        """publicdomain ignores certain answers."""
         answers = '<answers><locale>en</locale><license-publicdomain>' + \
                   '<commercial>y</commercial>' + \
                   '<derivatives>y</derivatives>' + \
@@ -120,9 +121,9 @@ class TestLicenseIssue(TestController):
                   '</license-publicdomain></answers>'
         res = self.app.post('/license/publicdomain/issue',
                                 params={'answers':answers})
-        assert relax_validate(RELAX_ERROR, res.body)
+        assert relax_validate(RELAX_ISSUE, res.body)
 
-    def test_recombo_failure(self):
+    def test_recombo_fails(self):
         """recombo fails with certain answers."""
         answers = '<answers><locale>en</locale><license-publicdomain>' + \
                   '<commercial>y</commercial>' + \

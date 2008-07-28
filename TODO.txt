@@ -1,6 +1,10 @@
 
 * Make <html> tag accurage in License-to-template conversions
 ** Add a cc.license.License.to_html() function
+** Ask Asheesh & Nathan 1) if this is a good idea,
+                        2) how to handle locale and RTL langs
+
+* Handle locales for LicenseSelectors (port locale data to selectors.rdf)
 
 * Update README.txt for minimal installation instructions
 

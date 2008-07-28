@@ -7,6 +7,9 @@
 * Refactor test suite canned data facilities
 ** Preferably make it draw data from the api, or maybe cc.license
 
+* Refactor test suite canned data facilities
+** Preferably make it draw data from the api, or maybe cc.license
+
 * Update README.txt for minimal installation instructions
 
 * Make everything in ./docs/ more informative

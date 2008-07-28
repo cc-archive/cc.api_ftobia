@@ -4,7 +4,8 @@
 ** Ask Asheesh & Nathan 1) if this is a good idea,
                         2) how to handle locale and RTL langs
 
-* Handle locales for LicenseSelectors (port locale data to selectors.rdf)
+* Refactor test suite canned data facilities
+** Preferably make it draw data from the api, or maybe cc.license
 
 * Update README.txt for minimal installation instructions
 

@@ -182,7 +182,6 @@ class TestController():
     def tearDown(self):
         """Test fixture for nosetests:
            - tears down the WSGI app server"""
-        # cherrypy doesn't need shutting down
         pass
 
     def makexml(self, bodystr):
